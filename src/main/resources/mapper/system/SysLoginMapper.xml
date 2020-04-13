@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.johnyehyo.base.system.mapper.SysLoginMapper">
+
+	<resultMap type="LoginUserEntity" id="SysLoginResult">
+		<id     property="id"       column="id"        />
+		<result property="account"     column="t_account"      />
+		<result property="username"      column="t_username"       />
+		<result property="password"     column="t_password"      />
+		<result property="gender"    column="t_gender"     />
+		<result property="pid"       column="pid"         />
+		<result property="roleNames"      column="role_names"       />
+		<result property="roleIds"     column="role_ids"      />
+		<result property="orgIds"   column="org_ids"    />
+		<result property="orgName"     column="org_name"      />
+	</resultMap>
+
+	<sql id="selectAdminVo">
+	    select id, t_account, t_username, t_password, pid, role_names, role_ids, org_ids, org_name
+        	from tb_admin_new
+    </sql>
+
+	<select id="selectAdmin" parameterType="LoginUserEntity" resultMap="SysLoginResult">
+		<include refid="selectAdminVo"/>
+		where t_account =  #{account}
+			AND t_password = #{password}
+	</select>
+ 	
+</mapper> 
