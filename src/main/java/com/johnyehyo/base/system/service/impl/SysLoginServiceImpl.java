@@ -4,7 +4,7 @@ import com.johnyehyo.base.common.utils.JWTUtil;
 import com.johnyehyo.base.common.utils.MD5Util;
 import com.johnyehyo.base.system.domain.LoginEntity;
 import com.johnyehyo.base.system.domain.LoginUserEntity;
-import com.johnyehyo.base.system.mapper.SysLoginMapper;
+import com.johnyehyo.base.system.mapper.ISysLoginMapper;
 import com.johnyehyo.base.system.service.ISysLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class SysLoginServiceImpl implements ISysLoginService {
 
     @Autowired
-    private SysLoginMapper sysLoginMapper;
+    private ISysLoginMapper sysLoginMapper;
 
     /**
      * 验证登录

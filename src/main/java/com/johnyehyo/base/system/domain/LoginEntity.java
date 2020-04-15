@@ -3,6 +3,7 @@ package com.johnyehyo.base.system.domain;
 import lombok.Data;
 
 /**
+ * 登录信息
  * @author JohnYehyo
  * @date 2020-4-13
  */

@@ -7,7 +7,7 @@ import com.johnyehyo.base.system.domain.LoginUserEntity;
  * @author JohnYehyo
  * @date 2020-4-13
  */
-public interface SysLoginMapper {
+public interface ISysLoginMapper {
 
     /**
      * 查询用户信息
