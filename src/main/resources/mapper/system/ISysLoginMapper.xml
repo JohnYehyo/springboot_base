@@ -17,13 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="orgName"     column="org_name"      />
 	</resultMap>
 
-	<sql id="selectAdminVo">
+	<sql id="selectLoginVo">
 	    select id, t_account, t_username, t_password, pid, role_names, role_ids, org_ids, org_name
         	from tb_admin_new
     </sql>
 
 	<select id="selectAdmin" parameterType="LoginUserEntity" resultMap="SysLoginResult">
-		<include refid="selectAdminVo"/>
+		<include refid="selectLoginVo"/>
 		where t_account =  #{account}
 			AND t_password = #{password}
 	</select>

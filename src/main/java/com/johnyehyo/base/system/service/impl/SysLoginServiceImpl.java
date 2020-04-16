@@ -39,12 +39,10 @@ public class SysLoginServiceImpl implements ISysLoginService {
      *
      * @param username 用户名
      * @param password 密码
-     * @param code  验证码
-     * @param uuid     唯一标识
      * @return 结果
      */
     @Override
-    public String createToken(String username, String password, String code, String uuid) {
+    public String createToken(String username, String password) {
         String sign = JWTUtil.sign(username, password);
         return sign;
     }

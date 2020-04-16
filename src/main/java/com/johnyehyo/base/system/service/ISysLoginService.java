@@ -19,11 +19,9 @@ public interface ISysLoginService {
      * 生成token
      * @param account
      * @param password
-     * @param code
-     * @param uuid
      * @return
      */
-    String createToken(String account, String password, String code, String uuid);
+    String createToken(String account, String password);
 
 
 }
