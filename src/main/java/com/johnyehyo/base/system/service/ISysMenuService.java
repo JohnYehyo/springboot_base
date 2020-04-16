@@ -9,5 +9,5 @@ import com.johnyehyo.base.system.domain.LoginEntity;
 public interface ISysMenuService {
 
 
-
+    String getMenuByRoles(String role_ids);
 }

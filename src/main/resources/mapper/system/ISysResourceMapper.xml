@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.johnyehyo.base.system.mapper.ISysResourceMapper">
+
+	<sql id="selectResourceVo">
+	    sselect ID, name, type, permission from base_resource_new where id=?
+    </sql>
+
+	<select id="getResource" parameterType="int" resultType="com.johnyehyo.base.system.domain.ResourceEntity">
+		<include refid="selectResourceVo"/>
+			where id =  #{id}
+	</select>
+ 	
+</mapper> 

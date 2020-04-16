@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.johnyehyo.base.system.mapper.ISysAdminMapper">
+
+	<sql id="selectAdminVo">
+	    select id, t_account, t_username, t_password, pid, role_names, role_ids, org_ids, org_name
+        	from tb_admin_new
+    </sql>
+
+	<select id="getAdminByAccount" parameterType="String" resultType="com.johnyehyo.base.system.domain.AdminEntity">
+		<include refid="selectAdminVo"/>
+			where t_account =  #{account}
+	</select>
+ 	
+</mapper> 
