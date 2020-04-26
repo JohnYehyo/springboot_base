@@ -2,6 +2,7 @@ package com.johnyehyo.base.system.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,9 @@ import java.util.Date;
  * @date 2020-4-16
  */
 @Data
-public class AdminEntity {
+public class AdminEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * ID
