@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.johnyehyo.base.system.mapper.ISysResourceMapper">
 
 	<sql id="selectResourceVo">
-	    sselect ID, name, type, permission from base_resource_new where id=?
+	    select ID, name, type, permission from base_resource_new
     </sql>
 
 	<select id="getResource" parameterType="int" resultType="com.johnyehyo.base.system.domain.ResourceEntity">
