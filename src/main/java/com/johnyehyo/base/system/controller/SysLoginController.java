@@ -1,10 +1,8 @@
 package com.johnyehyo.base.system.controller;
 
 import com.johnyehyo.base.common.constant.Constants;
-import com.johnyehyo.base.framework.session.SessionProvider;
 import com.johnyehyo.base.framework.web.domain.ResponseEntity;
 import com.johnyehyo.base.system.domain.AdminEntity;
-import com.johnyehyo.base.system.domain.LoginEntity;
 import com.johnyehyo.base.system.service.ISysLoginService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -16,7 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author JohnYehyo
@@ -60,12 +59,13 @@ public class SysLoginController {
     }
 
     private ResponseEntity tokenAction(Subject subject) {
-        ResponseEntity responseEntity = ResponseEntity.success("登录成功");
         Session session = subject.getSession();
         //暂时简单存储到HttpSession
         AdminEntity adminEntity = (AdminEntity) session.getAttribute(Constants.LOGIN_USER);
         String token = sysLoginService.createToken(adminEntity.getT_account(), adminEntity.getT_password());
-        responseEntity.put(Constants.TOKEN, token);
+        Map map = new HashMap();
+        map.put(Constants.TOKEN, token);
+        ResponseEntity responseEntity = ResponseEntity.success("登陆成功", map);
         session.setAttribute(Constants.TOKEN, token);
         return responseEntity;
     }
