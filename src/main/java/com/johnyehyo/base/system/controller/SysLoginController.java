@@ -28,9 +28,10 @@ public class SysLoginController {
     private ISysLoginService sysLoginService;
 
 
-    @RequestMapping(value = "sayHello")
-    public String sayHello() {
-        return "{\"success\": \"Hello\"}";
+    @GetMapping(value = "index")
+    public ResponseEntity sayHello() {
+        Subject subject = SecurityUtils.getSubject();
+        return tokenAction(subject);
     }
 
 
