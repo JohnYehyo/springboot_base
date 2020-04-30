@@ -92,6 +92,7 @@ public class ShiroConfig {
     ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition definition = new DefaultShiroFilterChainDefinition();
 //        definition.addPathDefinition("/login", "anon");
+        definition.addPathDefinition("/sys/**", "user");
         definition.addPathDefinition("/**", "authc");
         return definition;
     }

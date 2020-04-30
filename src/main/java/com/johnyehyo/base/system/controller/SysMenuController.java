@@ -27,9 +27,9 @@ public class SysMenuController extends BaseController {
     @Autowired
     private ISysMenuService sysMenuService;
 
-    @GetMapping
-    public ResponseEntity menu(@RequestHeader(value = "Authorization") String token){
-        System.out.println(token);
+    @GetMapping(value = "menu")
+    public ResponseEntity menu(){
+//        System.out.println(token);
         AdminEntity adminEntity = (AdminEntity) getSessionValue(Constants.LOGIN_USER);
         String json = sysMenuService.getMenuByRoles(adminEntity.getRole_ids());
         ResponseEntity responseEntity = ResponseEntity.success("请求成功", JSON.parse(json));
