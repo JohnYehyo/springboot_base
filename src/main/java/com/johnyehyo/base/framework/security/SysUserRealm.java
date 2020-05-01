@@ -3,7 +3,6 @@ package com.johnyehyo.base.framework.security;
 import com.johnyehyo.base.common.constant.Constants;
 import com.johnyehyo.base.system.domain.AdminEntity;
 import com.johnyehyo.base.system.service.ISysAdminService;
-import com.johnyehyo.base.system.service.ISysLoginService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
