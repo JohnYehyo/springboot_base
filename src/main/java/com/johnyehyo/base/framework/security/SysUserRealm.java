@@ -32,8 +32,6 @@ public class SysUserRealm extends AuthorizingRealm {
     private static final Logger logger = LoggerFactory.getLogger(SysUserRealm.class);
     public static final String KEY_USER = "user";
 
-    @Autowired
-    private SessionDAO sessionDao;
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
@@ -57,19 +55,15 @@ public class SysUserRealm extends AuthorizingRealm {
         AdminEntity admin = sysAdminService.getAdmin(account);
         if (admin == null) {
             logger.error("账号错误:"+account);
-            throw new UnknownAccountException();//没找到帐号
+            throw new UnknownAccountException();
         } else {
             subject = SecurityUtils.getSubject();
         }
 
-        // if (user.getLocked() == 1) {
-        //     throw new LockedAccountException(); //帐号锁定
-        // }
-
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                admin.getT_account(), //用户名
-                admin.getT_password(), //密码
-                getName()  //realm name
+                admin.getT_account(),
+                admin.getT_password(),
+                getName()
         );
 
         Session session = subject.getSession();
