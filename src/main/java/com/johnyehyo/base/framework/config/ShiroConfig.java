@@ -1,5 +1,6 @@
 package com.johnyehyo.base.framework.config;
 
+import com.johnyehyo.base.framework.security.CORSAuthenticationFilter;
 import com.johnyehyo.base.framework.security.RetryLimitHashedCredentialsMatcher;
 import com.johnyehyo.base.framework.security.SysUserFilter;
 import com.johnyehyo.base.framework.security.SysUserRealm;
@@ -100,6 +101,10 @@ public class ShiroConfig {
         return manager;
     }
 
+    public CORSAuthenticationFilter corsAuthenticationFilter(){
+        return new CORSAuthenticationFilter();
+    }
+
     /**
      * 过滤器工厂
      * @return
@@ -116,13 +121,15 @@ public class ShiroConfig {
 
         Map<String, Filter> filters = new LinkedHashMap<>();
         filters.put("sysUser", new SysUserFilter());
+        filters.put("corsAuthenticationFilter", new CORSAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(filters);
 
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/login", "authc");
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/unauthorized", "authc");
-        filterChainDefinitionMap.put("/sys/**", "sysUser");
+//        filterChainDefinitionMap.put("/sys/**", "sysUser");
+        filterChainDefinitionMap.put("/sys/**", "corsAuthenticationFilter");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

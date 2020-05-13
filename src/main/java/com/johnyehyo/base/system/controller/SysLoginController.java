@@ -36,6 +36,7 @@ public class SysLoginController {
 
 
     @PostMapping(value = "login")
+    @CrossOrigin
     public ResponseEntity login(HttpServletRequest request) {
         Subject subject = SecurityUtils.getSubject();
         if (subject.isAuthenticated()) {
