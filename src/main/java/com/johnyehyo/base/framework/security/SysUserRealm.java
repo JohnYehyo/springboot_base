@@ -35,8 +35,6 @@ public class SysUserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 
-//        LoginedUser loginedUser = (LoginedUser) principals.getPrimaryPrincipal();
-//        String username = loginedUser.getShortName();
 
         String username = (String) principals.getPrimaryPrincipal();
 
